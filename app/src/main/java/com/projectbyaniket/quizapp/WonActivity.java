@@ -5,8 +5,10 @@ import static com.projectbyaniket.quizapp.MainActivity.listQs;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +18,11 @@ import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 public class WonActivity extends AppCompatActivity {
 
     CircularProgressBar circularProgressBar;
-    TextView resultText;
+    TextView resultText , exitBtn;
     int correct;
     int wrong;
     LinearLayout shareBtn;
+    ImageView backBtn;
 
 
     @Override
@@ -30,12 +33,30 @@ public class WonActivity extends AppCompatActivity {
         circularProgressBar = findViewById(R.id.circularProgressBar);
         resultText = findViewById(R.id.idResultText);
         shareBtn = findViewById(R.id.idbtnShare);
+        exitBtn = findViewById(R.id.idExit);
+        backBtn = findViewById(R.id.idBack);
 
         correct = getIntent().getIntExtra("correct",0);
         wrong = getIntent().getIntExtra("wrong",0);
 
         circularProgressBar.setProgress(correct);
+        circularProgressBar.setProgressMax(listQs.size());
         resultText.setText(correct+"/"+listQs.size());
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WonActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
+            }
+        });
         shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

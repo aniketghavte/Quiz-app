@@ -1,5 +1,6 @@
 package com.projectbyaniket.quizapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,12 +8,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
 
     public static ArrayList<ModelClass> listQs;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,35 +28,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listQs = new ArrayList<>();
-        listQs.add(new ModelClass("5-7","2","3","-5","-2","-2"));
-        listQs.add(new ModelClass("11-7","2","3","4","2","4"));
-        listQs.add(new ModelClass("100-27","2","73","-5","2","73"));
-        listQs.add(new ModelClass("80-20","25","60","-5","2","60"));
-        listQs.add(new ModelClass("55+10","25","35","65","2","65"));
-        listQs.add(new ModelClass("69-69","0","3","-5","2","0"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
-        listQs.add(new ModelClass("what is 5-7","2","3","-5","2","-2"));
+        reference = FirebaseDatabase.getInstance().getReference("Questions");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    ModelClass modelClass = dataSnapshot.getValue(ModelClass.class);
+                    listQs.add(modelClass);
+                }
+                Intent intent = new Intent(MainActivity.this,DashBoardActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                Intent intent = new Intent(MainActivity.this,DashBoardActivity.class);
-                startActivity(intent);
-                finish();
             }
         },2000);
     }

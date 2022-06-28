@@ -3,14 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/drawable/card.xml" value="0.2325" />
         <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/drawable/empty_bg.xml" value="0.109" />
         <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/drawable/nextbtn.xml" value="0.1" />
+        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/drawable/options_bg.xml" value="0.146" />
         <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/drawable/progress_bg.xml" value="0.109" />
         <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/drawable/sharebtn.xml" value="0.2325" />
         <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/drawable/timeoutbtn.xml" value="0.109" />
-        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/layout/activity_dash_board.xml" value="0.228125" />
-        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/layout/activity_main.xml" value="0.22916666666666666" />
-        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/layout/activity_won.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/layout/activity_dash_board.xml" value="0.16964285714285715" />
+        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/layout/activity_dash_boardnew.xml" value="0.1" />
+        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/layout/activity_won.xml" value="0.1" />
         <entry key="..\:/Users/ANIKET GHAVTE/Quizapp/app/src/main/res/layout/timeout_dialog.xml" value="0.12545289855072464" />
       </map>
     </option>

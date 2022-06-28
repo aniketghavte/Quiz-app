@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -30,7 +31,7 @@ public class DashBoardActivity extends AppCompatActivity {
     List<ModelClass> allQsList;
     ModelClass modelClass;
     int index = 0;
-    TextView question,OA, OB, OC, OD;
+    TextView question,OA, OB, OC, OD , exitBtn;
     CardView Cardquestion,CardOA, CardOB, CardOC, CardOD;
     int correct_count = 0;
     int worng_count = 0;
@@ -48,10 +49,18 @@ public class DashBoardActivity extends AppCompatActivity {
         modelClass = listQs.get(index);
         setAllData();
 
+        nextBtn.setBackgroundColor(getResources().getColor(R.color.green));
         resetColor();
         nextBtn.setClickable(false);
         Cardquestion.setBackgroundColor(getResources().getColor(R.color.white));
 
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
+            }
+        });
         countDownTimer = new CountDownTimer(20000, 1000) {
             @Override
             public void onTick(long l) {
@@ -73,6 +82,12 @@ public class DashBoardActivity extends AppCompatActivity {
                     }
                 });
                 dialog.show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        gameWon();
+                    }
+                },5000);
             }
         }.start();
     }
@@ -100,6 +115,8 @@ public class DashBoardActivity extends AppCompatActivity {
         OB = findViewById(R.id.idOptionB);
         OC = findViewById(R.id.idOptionC);
         OD = findViewById(R.id.idOptionD);
+
+        exitBtn = findViewById(R.id.idExit);
     }
 
     public void Correct(CardView cardView) {
@@ -171,6 +188,7 @@ public class DashBoardActivity extends AppCompatActivity {
     public void option_A_Click(View view) {
         if (index < listQs.size()-1){
             nextBtn.setClickable(true);
+            nextBtn.setBackgroundColor(getResources().getColor(R.color.white));
             CardOA.setBackgroundColor(getResources().getColor(R.color.green));
             disableButton();
             if (modelClass.getOA().equals(modelClass.Ans)){
@@ -189,6 +207,7 @@ public class DashBoardActivity extends AppCompatActivity {
                     setAllData();
                     enableButton();
                     nextBtn.setClickable(false);
+                    nextBtn.setBackgroundColor(getResources().getColor(R.color.green));
                 }
             });
         }else {
@@ -227,6 +246,7 @@ public class DashBoardActivity extends AppCompatActivity {
     public void option_B_Click(View view) {
         if (index < listQs.size()-1){
             nextBtn.setClickable(true);
+            nextBtn.setBackgroundColor(getResources().getColor(R.color.white));
             CardOB.setBackgroundColor(getResources().getColor(R.color.green));
             disableButton();
             if (modelClass.getOB().equals(modelClass.Ans)){
@@ -245,6 +265,7 @@ public class DashBoardActivity extends AppCompatActivity {
                     setAllData();
                     enableButton();
                     nextBtn.setClickable(false);
+                    nextBtn.setBackgroundColor(getResources().getColor(R.color.green));
                 }
             });
         } else {
@@ -281,6 +302,7 @@ public class DashBoardActivity extends AppCompatActivity {
     public void option_C_Click(View view) {
         if (index < listQs.size()-1){
             nextBtn.setClickable(true);
+            nextBtn.setBackgroundColor(getResources().getColor(R.color.white));
             CardOC.setBackgroundColor(getResources().getColor(R.color.green));
             disableButton();
             if (modelClass.getOC().equals(modelClass.Ans)){
@@ -299,6 +321,7 @@ public class DashBoardActivity extends AppCompatActivity {
                     setAllData();
                     enableButton();
                     nextBtn.setClickable(false);
+                    nextBtn.setBackgroundColor(getResources().getColor(R.color.green));
                 }
             });
         }else {
@@ -335,6 +358,7 @@ public class DashBoardActivity extends AppCompatActivity {
     public void option_D_Click(View view) {
         if (index < listQs.size()-1){
             nextBtn.setClickable(true);
+            nextBtn.setBackgroundColor(getResources().getColor(R.color.white));
             CardOD.setBackgroundColor(getResources().getColor(R.color.green));
             disableButton();
             if (modelClass.getOD().equals(modelClass.Ans)){
@@ -353,6 +377,7 @@ public class DashBoardActivity extends AppCompatActivity {
                     setAllData();
                     enableButton();
                     nextBtn.setClickable(false);
+                    nextBtn.setBackgroundColor(getResources().getColor(R.color.green));
                 }
             });
         }else {

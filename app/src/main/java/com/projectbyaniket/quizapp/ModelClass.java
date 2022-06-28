@@ -9,6 +9,9 @@ public class ModelClass {
     String OD;
     String Ans;
 
+    public ModelClass() {
+    }
+
     public ModelClass(String question, String OA, String OB, String OC, String OD, String ans) {
         Question = question;
         this.OA = OA;
