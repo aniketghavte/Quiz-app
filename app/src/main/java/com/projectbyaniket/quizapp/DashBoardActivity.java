@@ -45,7 +45,7 @@ public class DashBoardActivity extends AppCompatActivity {
         Hooks();
 
         allQsList = listQs;
-        //Collections.shuffle(allQsList);
+        Collections.shuffle(allQsList);
         modelClass = listQs.get(index);
         setAllData();
 
@@ -161,6 +161,7 @@ public class DashBoardActivity extends AppCompatActivity {
         intent.putExtra("correct",correct_count);
         intent.putExtra("wrong",worng_count);
         startActivity(intent);
+        finish();
 
     }
 
